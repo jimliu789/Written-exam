@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery-表单提交</title>
+</head>
+<body>
+	<form id="form">
+		<input type="text" name="text">
+		<input type="checkbox" id="check" name="check">
+		<input type="button" id="btn" value="点我提交">
+	</form>
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script>
+	    ;(function($){
+	    	$.extend(
+	    	{
+	    		"formSubmit" : function(form,url)
+	    		{
+	    				//表单序列化
+	    			    var parts = [],
+	    			        field = null,
+	    			        i,
+	    			        len,
+	    			        j,
+	    			        optLen,
+	    			        option,
+	    			        optValue;
+	    			    
+	    			    for (i=0, len=form.elements.length; i < len; i++){
+	    			        field = form.elements[i];
+	    			    
+	    			        switch(field.type){
+	    			            case "select-one":
+	    			            case "select-multiple":
+	    			            
+	    			                if (field.name.length){
+	    			                    for (j=0, optLen = field.options.length; j < optLen; j++){
+	    			                        option = field.options[j];
+	    			                        if (option.selected){
+	    			                            optValue = "";
+	    			                            if (option.hasAttribute){
+	    			                                optValue = (option.hasAttribute("value") ? option.value : option.text);
+	    			                            } else {
+	    			                                optValue = (option.attributes["value"].specified ? option.value : option.text);
+	    			                            }
+	    			                            parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(optValue));
+	    			                        }
+	    			                    }
+	    			                }
+	    			                break;
+	    			                
+	    			            case undefined:     //fieldset
+	    			            case "file":        //file input
+	    			            case "submit":      //submit button
+	    			            case "reset":       //reset button
+	    			            case "button":      //custom button
+	    			                break;
+	    			                
+	    			            case "radio":       //radio button
+	    			            case "checkbox":    //checkbox
+	    			                if (!field.checked){
+	    			                    break;
+	    			                }
+	    			                /* falls through */
+	    			                            
+	    			            default:
+	    			                //don't include form fields without names
+	    			                if (field.name.length){
+	    			                    parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value));
+	    			                }
+	    			        }
+	    			    }        
+	    			   	parts.join("&");
+	    			   	//ajax提交
+	    			    $.ajax(
+	    			    {
+	    			    	type:"GET",
+	    			    	url:url,
+	    			    	data:parts,
+	    			    	success:function(parts)
+	    			    	{
+	    			    		alert("提交成功");
+	    			    	},
+	    			    	error:function(XMLHttpRequest,textStatus)
+	    			    	{
+	    			    		alert("提交失败");
+	    			    	}
+	    			    })
+	    		}
+	    	})
+	    })(jQuery);
+		var form = document.getElementById('form')
+	   	$("#btn").click(function()
+	   	{
+	   		$.formSubmit(form,'1.php');
+	   	})
+	</script>
+</body>
+</html>

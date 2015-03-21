@@ -31,5 +31,13 @@ h1, h2, h3, h4, h5, h6, em, strong, b { font-weight: bold; }
 
 del, ins, u, s, a, a:hover { text-decoration: none; }
 
-.center{width: 200px; margin: 50px auto;}
-.mt30{ margin-top: 30px;}
+
+#container{position: relative; width: 800px; overflow: hidden; height: 600px;  border: 2px solid #333; left: 50%; margin-left: -400px;}
+#imgwrap{ position: absolute; width: 4800px; height: 400px; z-index: 1;}
+#imgwrap img{float: left;}
+#dotted{position: absolute; height: 10px; width: 100px; z-index: 2; bottom: 20px; left: 400px;}
+#dotted span { cursor: pointer; float: left; border: 1px solid #fff; width: 10px; height: 10px; border-radius: 50%; background: #333; margin-right: 5px;}
+#dotted .focus {  background: orange;}
+.arrow { cursor: pointer; line-height: 39px; text-align: center; font-size: 36px; font-weight: bold; width: 40px; height: 40px;  position: absolute; z-index: 2; top: 250px; background-color: RGBA(0,0,0,.3); color: #fff;}
+#left { left: 20px;}
+#right { right: 20px;}
