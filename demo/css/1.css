@@ -37,6 +37,8 @@ del, ins, u, s, a, a:hover { text-decoration: none; }
 .row p{text-align: center;}
 .row p img{width: 50%;}
 .list{background: #ccc; overflow: hidden;}
+/*下部内容*/
 .title{ margin-left: 20px; padding-left: 20px; border-left: 3px solid #F00; height: 20px; line-height: 20px;}
 .wrap{width:50%; padding-left:10px; padding-right: 10px; margin-top: 20px; float: left; box-sizing:border-box; -webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
 .inside{height: 100px; background: green;}
+.font16{font-size: 16px;}

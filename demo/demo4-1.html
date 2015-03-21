@@ -7,9 +7,9 @@
 </head>
 <body>
 	<form id="form" class="center">
-		<input type="text" class="mt30"><br />
-		<input type="checkbox" id="check" class="mt30"><br />
-		<select class="mt30">
+		<input type="text" name="text" class="mt30"><br />
+		<input type="checkbox" id="check" name="check" class="mt30"><br />
+		<select class="mt30" name="No">
 			<option>第一个</option>
 			<option>第二个</option>
 		</select><br />
@@ -71,6 +71,7 @@
 	            }
 	        }        
 	       	parts.join("&");
+	       	console.log(parts);
 	       	//ajax提交
 	        $.ajax(
 	        {
