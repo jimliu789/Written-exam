@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组问题</title>
+</head>
+<body>
+	<script>
+		var a =[3,10,45,6,7,8,9,9,6,5,42,54,6,5,76,7,54,45,45,67,67,4,100,7,32,20,42,84,81,22];
+		var j = 0;
+		var n = 16;
+		var k = a.length;
+		var random = [];
+		while(k > 25)
+		{
+			random.push(parseInt(Math.random()*k));
+			k--;
+		}
+
+		//排序
+		function Sort(arr){
+		    for(var i = 0;i < arr.length;i ++){
+		        for(var j = i;j < arr.length;j ++){
+		            if(arr[i] < arr[j]){
+		                var temp = arr[i];
+		                arr[i] = arr[j];
+		                arr[j] = temp;
+		            }
+		        }
+		    }
+		}
+		Sort(random);
+		console.log(random)
+		//判断
+		if(random[4] <= n)
+		{
+			j += 1;
+			n += 1;
+			if(random[3] <= n)
+			{
+				j += 1;
+				n += 1;
+				if(random[2] <= n)
+				{
+					j += 1;
+					n += 1;
+					if(random[1] <= n)
+					{
+						j += 1;
+						n += 1;
+						if(random[0] <= n)
+						{
+							j += 1;
+							n += 1;
+						}
+					}
+				}
+			}
+		}
+		else
+		{
+			j = 0;
+		}
+
+		var result = 16 + j;
+		//我的想法是数组从0个元素开始
+		alert("新数组中的第16个元素在原数组中的位置是第"+result+"个元素");
+	</script>
+</body>
+</html>
